@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Stellar by HTML5 UP</title>
+		<title>Guía Ocerin</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -19,10 +19,11 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<span class="logo"><img src="images/logo.svg" alt="" /></span>
-						<h1>Stellar</h1>
-						<p>Just another free, fully responsive site template<br />
-						built by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<button id="dark-mode-toggle" class="dark-mode-btn" title="Alternar modo oscuro">🌙</button>
+						<span class="logo"><img src="images/ocerin.png" alt="" /></span>
+						<h1>Guía Ocerin</h1>
+						<p>La guía mas actualizada de Hattrick<br />
+						built by <a href="https://twitter.com/alruiz85">@alrui85</a>.</p>
 					</header>
 
 				<!-- Nav -->
@@ -179,6 +180,36 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<!-- Dark Mode Script -->
+			<script>
+				// Dark mode functionality
+				document.addEventListener('DOMContentLoaded', function() {
+					const darkModeToggle = document.getElementById('dark-mode-toggle');
+					const body = document.body;
+					
+					// Check for saved dark mode preference
+					const isDarkMode = localStorage.getItem('darkMode') === 'true';
+					if (isDarkMode) {
+						body.classList.add('dark-mode');
+					}
+					
+					// Toggle dark mode
+					darkModeToggle.addEventListener('click', function() {
+						body.classList.toggle('dark-mode');
+						
+						// Save preference
+						const isNowDarkMode = body.classList.contains('dark-mode');
+						localStorage.setItem('darkMode', isNowDarkMode);
+						
+						// Add animation effect
+						this.style.transform = 'scale(0.9)';
+						setTimeout(() => {
+							this.style.transform = 'scale(1)';
+						}, 150);
+					});
+				});
+			</script>
 
 	</body>
 </html>
